@@ -1,0 +1,32 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class CameraMovement : MonoBehaviour {
+
+    public float horizontalSpeed;
+    public float verticalSpeed;
+    public float cameraHight;
+
+	// Use this for initialization
+	void Start ()
+    {
+	
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        transform.position = new Vector3(transform.position.x, cameraHight, transform.position.z);
+        
+        float horizontal = Input.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
+        float vertical = Input.GetAxis("Vertical") * verticalSpeed * Time.deltaTime;
+
+        transform.Translate(Vector3.forward * vertical);
+        transform.Translate(Vector3.right * horizontal);
+    }
+
+    void FixedUpdate()
+    {
+        
+    }
+}
