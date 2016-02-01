@@ -6,12 +6,6 @@ public class CameraMovement : MonoBehaviour {
     public float horizontalSpeed;
     public float verticalSpeed;
     public float cameraHight;
-
-	// Use this for initialization
-	void Start ()
-    {
-	
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -21,12 +15,7 @@ public class CameraMovement : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * verticalSpeed * Time.deltaTime;
 
-        transform.Translate(Vector3.forward * vertical);
-        transform.Translate(Vector3.right * horizontal);
-    }
-
-    void FixedUpdate()
-    {
-        
+        transform.Translate(Vector3.forward * vertical, Space.World);
+        transform.Translate(Vector3.right * horizontal, Space.World);
     }
 }
